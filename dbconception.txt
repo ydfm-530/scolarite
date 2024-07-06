@@ -1,0 +1,26 @@
+conception de la base de données dbscolarite avec le SGBD Mysql :
+
+create database dbscolarite character set'utf8';
+
+use dbscolarite;
+
+create table eleve(
+matricule varchar(10) primary key,
+nom varchar(20) not null,
+prenom varchar(20) not null,
+classe varchar(20) not null,
+mta decimal(2,6))
+engine=innodb;
+
+create table paie(
+id int auto_increment primary key,
+ideleve varchar(10) not null,
+mois varchar(20) not null,
+mtp decimal(6,2),
+datep date)
+engine=innodb;
+
+alter table paie add constraint fk foreign key(ideleve)
+references eleve(matricule);
+
+  
